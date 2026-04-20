@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(ex1
         src/Ex1/main_ex1.cpp
+        src/SDA/Kd-Tree/Kd-Tree.cpp
 )
+target_include_directories(ex1 PRIVATE src/SDA/Kd-Tree)
 target_compile_options(ex1 PRIVATE -Wall -Wextra)
 
 add_executable(ex2
