@@ -3,6 +3,8 @@ project(Devoir2_StructureDeDonnees_UQAC)
 
 set(CMAKE_CXX_STANDARD 20)
 
+file(COPY data/ DESTINATION ${CMAKE_BINARY_DIR}/data)
+
 add_executable(ex1
         src/Ex1/main_ex1.cpp
         src/SDA/Kd-Tree/Kd-Tree.cpp
@@ -12,7 +14,10 @@ target_compile_options(ex1 PRIVATE -Wall -Wextra)
 
 add_executable(ex2
         src/Ex2/main_ex2.cpp
+        src/SDA/Hypergraphe/Hypergraphe.cpp
+        src/SDA/Hypergraphe/Hypergraphe.h
 )
+target_include_directories(ex2 PRIVATE src)
 target_compile_options(ex2 PRIVATE -Wall -Wextra)
 
 add_executable(ex3
