@@ -77,19 +77,19 @@ $(EX4_TARGET): $(EX4_OBJECTS)
 	$(CXX) $(CXXFLAGS) $(EX1_INCLUDES) $(EX2_INCLUDES) $(EX3_INCLUDES) $(EX4_INCLUDES) -c $< -o $@
 
 run-ex1: $(EX1_TARGET)
-	@echo Lancement de l'exercice 1...
+	@echo "Lancement de l'exercice 1..."
 	@$(RUN_PREFIX)$(EX1_TARGET)
 
 run-ex2: $(EX2_TARGET)
-	@echo Lancement de l'exercice 2...
+	@echo "Lancement de l'exercice 2..."
 	@$(RUN_PREFIX)$(EX2_TARGET)
 
 run-ex3: $(EX3_TARGET)
-	@echo Lancement de l'exercice 3...
+	@echo "Lancement de l'exercice 3..."
 	@$(RUN_PREFIX)$(EX3_TARGET)
 
 run-ex4: $(EX4_TARGET)
-	@echo Lancement de l'exercice 4...
+	@echo "Lancement de l'exercice 4..."
 	@$(RUN_PREFIX)$(EX4_TARGET)
 
 clean:
