@@ -32,9 +32,10 @@ EX1_INCLUDES := -I$(SDA_DIR)
 # Exercice 2 - a completer plus tard
 # ------------------------------------------
 EX2_TARGET := $(TARGET_DIR)/ex2$(EXE_EXT)
-EX2_SOURCES := $(SRC_DIR)/Ex2/main_ex2.cpp
+EX2_SOURCES := $(SRC_DIR)/Ex2/main_ex2.cpp \
+               $(SRC_DIR)/SDA/Hypergraphe/Hypergraphe.cpp
 EX2_OBJECTS := $(EX2_SOURCES:.cpp=.o)
-EX2_INCLUDES :=
+EX2_INCLUDES := -I$(SRC_DIR)
 
 # ------------------------------------------
 # Exercice 3 - a completer plus tard
