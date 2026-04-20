@@ -40,9 +40,10 @@ EX2_INCLUDES :=
 # Exercice 3 - a completer plus tard
 # ------------------------------------------
 EX3_TARGET := $(TARGET_DIR)/ex3$(EXE_EXT)
-EX3_SOURCES := $(SRC_DIR)/Ex3/main_ex3.cpp
+EX3_SOURCES := $(SRC_DIR)/Ex3/main_ex3.cpp \
+            	$(SRC_DIR)/SDA/Labyrinthe/labyrinth.cpp
 EX3_OBJECTS := $(EX3_SOURCES:.cpp=.o)
-EX3_INCLUDES :=
+EX3_INCLUDES := -I$(SRC_DIR)/SDA/Labyrinthe/
 
 # ------------------------------------------
 # Exercice 4 - a completer plus tard

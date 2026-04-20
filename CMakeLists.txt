@@ -22,7 +22,9 @@ target_compile_options(ex2 PRIVATE -Wall -Wextra)
 
 add_executable(ex3
         src/Ex3/main_ex3.cpp
+        src/SDA/Labyrinthe/labyrinth.cpp
 )
+target_include_directories(ex3 PRIVATE src/SDA/Labyrinthe)
 target_compile_options(ex3 PRIVATE -Wall -Wextra)
 
 add_executable(ex4
