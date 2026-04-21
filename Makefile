@@ -17,27 +17,28 @@ endif
 
 TARGET_DIR := .
 SRC_DIR := src
-SDA_DIR := $(SRC_DIR)/SDA/Kd-Tree
+SDA_DIR := $(SRC_DIR)/SDA
 
 # ------------------------------------------
 # Exercice 1 - KD-Tree
 # ------------------------------------------
 EX1_TARGET := $(TARGET_DIR)/ex1$(EXE_EXT)
 EX1_SOURCES := $(SRC_DIR)/Ex1/main_ex1.cpp \
-               $(SDA_DIR)/Kd-Tree.cpp
+               $(SDA_DIR)/Kd-Tree/Kd-Tree.cpp
 EX1_OBJECTS := $(EX1_SOURCES:.cpp=.o)
-EX1_INCLUDES := -I$(SDA_DIR)
+EX1_INCLUDES := -I$(SDA_DIR)/Kd-Tree
 
 # ------------------------------------------
-# Exercice 2 - a completer plus tard
+# Exercice 2 - Graphes Web
 # ------------------------------------------
 EX2_TARGET := $(TARGET_DIR)/ex2$(EXE_EXT)
-EX2_SOURCES := $(SRC_DIR)/Ex2/main_ex2.cpp
+EX2_SOURCES := $(SRC_DIR)/Ex2/main_ex2.cpp \
+               $(SDA_DIR)/Hypergraphe/Hypergraphe.cpp
 EX2_OBJECTS := $(EX2_SOURCES:.cpp=.o)
-EX2_INCLUDES :=
+EX2_INCLUDES := -I$(SDA_DIR)/Hypergraphe
 
 # ------------------------------------------
-# Exercice 3 - a completer plus tard
+# Exercice 3 - Labyrinthes
 # ------------------------------------------
 EX3_TARGET := $(TARGET_DIR)/ex3$(EXE_EXT)
 EX3_SOURCES := $(SRC_DIR)/Ex3/main_ex3.cpp \
@@ -46,7 +47,7 @@ EX3_OBJECTS := $(EX3_SOURCES:.cpp=.o)
 EX3_INCLUDES := -I$(SRC_DIR)/SDA/Labyrinthe/
 
 # ------------------------------------------
-# Exercice 4 - a completer plus tard
+# Exercice 4 - Compression d'images
 # ------------------------------------------
 EX4_TARGET := $(TARGET_DIR)/ex4$(EXE_EXT)
 EX4_SOURCES := $(SRC_DIR)/Ex4/main_ex4.cpp \
