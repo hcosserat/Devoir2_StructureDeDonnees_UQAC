@@ -93,7 +93,7 @@ int main() {
             cout << "\n========== SOLVING LABYRINTHE ==========\n";
             lab.clearSolution();
             solved = lab.solveAStar();
-            cout << "\nSolving using A* : " << (solved ? "OK" : "FAIL") << endl;
+            cout << "Solving using A* : " << (solved ? "OK" : "FAIL") << endl;
         }
         lab.print();
         cout << "========================================\n\n";

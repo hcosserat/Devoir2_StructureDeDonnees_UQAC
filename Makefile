@@ -49,9 +49,10 @@ EX3_INCLUDES := -I$(SRC_DIR)/SDA/Labyrinthe/
 # Exercice 4 - a completer plus tard
 # ------------------------------------------
 EX4_TARGET := $(TARGET_DIR)/ex4$(EXE_EXT)
-EX4_SOURCES := $(SRC_DIR)/Ex4/main_ex4.cpp
+EX4_SOURCES := $(SRC_DIR)/Ex4/main_ex4.cpp \
+            	$(SRC_DIR)/SDA/CompressionImages/image.cpp
 EX4_OBJECTS := $(EX4_SOURCES:.cpp=.o)
-EX4_INCLUDES :=
+EX4_INCLUDES := -I$(SRC_DIR)/SDA/Labyrinthe/ -I$(SRC_DIR)/SDA/CompressionImages/
 
 .PHONY: all ex1 ex2 ex3 ex4 run-ex1 run-ex2 run-ex3 run-ex4 clean clean-ex1 clean-ex2 clean-ex3 clean-ex4 rebuild
 
