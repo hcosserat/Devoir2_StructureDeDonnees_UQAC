@@ -39,3 +39,9 @@
 
 # debug information files
 *.dwo
+
+# compile directory (to change if named differently)
+build/
+
+# data files generated to ignore (images generated from ex4)
+data/ex4/Saves/
