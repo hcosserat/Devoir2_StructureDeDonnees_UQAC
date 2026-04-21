@@ -24,10 +24,14 @@ int main() {
 
         try {
             Image image = Image(load_path + image_name, width, height);
-            cout << "Image loaded : " << width << "x" << height << endl;
+            cout << "Image loaded -> size = " << width << "x" << height 
+                << " / nb pixels = " << width * height << endl;
 
             QuadTree<struct Pixel>* image_tree = image.encode(); // Encode
-            cout << "Image compressed" << endl;
+            cout << "Image compressed -> nb nodes = " << image_tree->nTrees() 
+                << " (nb internal nodes = " << image_tree->nNodes() 
+                << " + nb leaves = " << image_tree->nLeaves() << ")" << endl;
+
             Image image_to_save = Image(image_tree, width, height); // Decode
             cout << "Image decompressed" << endl;
             delete image_tree;

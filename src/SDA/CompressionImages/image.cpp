@@ -76,6 +76,10 @@ void Image::save(const string& filename) const {
 
 // Uniform
 bool Image::isUniform(const struct Position& up_left_corner, const struct Position& size) const {
+    // If image size is null
+    if ((size.i < 1) || (size.j < 1))
+        return false;
+
     struct Pixel val = (*this)(up_left_corner);
 
     for (int i = up_left_corner.i; i < up_left_corner.i + size.i; ++ i) {
@@ -94,6 +98,10 @@ bool Image::isUniform(int i, int j, int size_i, int size_j) const {
 // Reccursive functions
 // Encode a loaded image into a quadtree
 QuadTree<struct Pixel>* Image::encode(const struct Position& up_left_corner, const struct Position& size) const {
+    // If image size is null
+    if ((size.i < 1) || (size.j < 1))
+        return nullptr;
+
     // If is a simple image (Uniform) -> leaf
     if (isUniform(up_left_corner, size)) {
         return new QuadLeaf<struct Pixel>((*this)(up_left_corner));
@@ -116,6 +124,10 @@ QuadTree<struct Pixel>* Image::encode(int i, int j, int size_i, int size_j) cons
 
 // Decode an image from a quadtree
 void Image::decode(const QuadTree<struct Pixel>* qt, const struct Position& up_left_corner, const struct Position& size) {
+    // If image size is null
+    if ((size.i < 1) || (size.j < 1))
+        return;
+
     // If is a leaf -> fill the image with leaf value
     if (qt->isLeaf()) {
         struct Pixel val = qt->value();
