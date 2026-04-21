@@ -21,7 +21,7 @@ struct Position {
         return abs(i - other.i) + abs(j - other.j);
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Position& p) {
+    friend std::ostream& operator<<(std::ostream& os, const struct Position& p) {
         return os << "Position = (" << p.i << ", " << p.j << ")";
     }
 };
@@ -33,6 +33,8 @@ private:
     vector<vector<T>> data;
 
 public:
+    Matrix() = default;
+
     Matrix(const struct Position& size, const T& default_value)
     :data(size.i, vector<T>(size.j, default_value)) {}
 

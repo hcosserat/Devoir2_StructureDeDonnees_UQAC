@@ -3,7 +3,8 @@ project(Devoir2_StructureDeDonnees_UQAC)
 
 set(CMAKE_CXX_STANDARD 20)
 
-file(COPY data/ DESTINATION ${CMAKE_BINARY_DIR}/data)
+#file(COPY data/ DESTINATION ${CMAKE_BINARY_DIR}/data)
+file(CREATE_LINK ${CMAKE_SOURCE_DIR}/data ${CMAKE_BINARY_DIR}/data SYMBOLIC)
 
 add_executable(ex1
         src/Ex1/main_ex1.cpp
@@ -29,5 +30,9 @@ target_compile_options(ex3 PRIVATE -Wall -Wextra)
 
 add_executable(ex4
         src/Ex4/main_ex4.cpp
+        src/SDA/CompressionImages/image.cpp
 )
+target_include_directories(ex4 PRIVATE src/SDA/CompressionImages)
+target_include_directories(ex4 PRIVATE src/SDA/Labyrinthe) # use of class matrix from ex3
+target_compile_options(ex4 PRIVATE -Wno-missing-field-initializers) # mainly ignore all the stb errors
 target_compile_options(ex4 PRIVATE -Wall -Wextra)
