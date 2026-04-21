@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
+#include <filesystem>
 
 #include "image.hpp"
 
 using namespace std;
+namespace fs = filesystem;
 
 int main() {
     cout << "EXERCICE 4 : COMPRESSION D'IMAGES" << endl;
@@ -12,6 +14,11 @@ int main() {
     const string images_path = "data/ex4/";
     const string load_path = images_path + "Images/";
     const string save_path = images_path + "Saves/";
+
+    if (fs::exists(save_path)) {
+        fs::remove_all(save_path);
+    }
+    fs::create_directories(save_path);
 
     string image_name;
 
