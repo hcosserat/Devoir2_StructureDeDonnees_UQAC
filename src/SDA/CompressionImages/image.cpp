@@ -31,7 +31,7 @@ Image::Image(const string& filename, int& width, int& height) {
     unsigned char* data = stbi_load((filename + ".png").c_str(), &width, &height, &channels, 3); // 3 -> rgb
 
     if (!data) {
-        throw std::runtime_error("Error while loading image : invalid image name ?");
+        throw std::runtime_error("Image's load failed (invalid image name ?)");
     }
 
     resize({height, width}, {});
@@ -104,9 +104,9 @@ QuadTree<struct Pixel>* Image::encode(const struct Position& up_left_corner, con
 
     return new QuadNode<struct Pixel>(
         encode(up_left_corner, half_size), // NW
-        encode({up_left_corner.i, up_left_corner.j + half_size.j}, half_size), // NE
-        encode({up_left_corner.i + half_size.i, up_left_corner.j + half_size.j}, half_size), // SE
-        encode({up_left_corner.i + half_size.i, up_left_corner.j}, half_size) // SW
+        encode({up_left_corner.i, up_left_corner.j + half_size.j}, half_size + Position(0, size.j % 2)), // NE
+        encode({up_left_corner.i + half_size.i, up_left_corner.j + half_size.j}, half_size + Position(size.i % 2, size.j % 2)), // SE
+        encode({up_left_corner.i + half_size.i, up_left_corner.j}, half_size + Position(size.i % 2, 0)) // SW
     );
 }
 
@@ -132,9 +132,9 @@ void Image::decode(const QuadTree<struct Pixel>* qt, const struct Position& up_l
     struct Position half_size = {size.i / 2, size.j / 2};
 
     decode(qt->son(NW), up_left_corner, half_size);
-    decode(qt->son(NE), {up_left_corner.i, up_left_corner.j + half_size.j}, half_size);
-    decode(qt->son(SE), {up_left_corner.i + half_size.i, up_left_corner.j + half_size.j}, half_size);
-    decode(qt->son(SW), {up_left_corner.i + half_size.i, up_left_corner.j}, half_size);
+    decode(qt->son(NE), {up_left_corner.i, up_left_corner.j + half_size.j}, half_size + Position(0, size.j % 2));
+    decode(qt->son(SE), {up_left_corner.i + half_size.i, up_left_corner.j + half_size.j}, half_size + Position(size.i % 2, size.j % 2));
+    decode(qt->son(SW), {up_left_corner.i + half_size.i, up_left_corner.j}, half_size + Position(size.i % 2, 0));
 }
 
 void Image::decode(const QuadTree<struct Pixel>* qt, int i, int j, int size_i, int size_j) {
